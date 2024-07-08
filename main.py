@@ -5,42 +5,34 @@ def main():
     admin = Admin()
 
     while True:
-        print("\nLibrary Management System")
-        print("1. Add Book")
-        print("2. Print Books")
-        print("3. Search Books")
-        print("4. Add User")
-        print("5. Borrow Book")
-        print("6. Return Book")
-        print("7. Print Borrowers")
-        print("8. Print Users")
-        print("9. Exit")
+        print("""
+            Library Management System
+            1. Add Book
+            2. Print Books
+            3. Search Books
+            4. Add User
+            5. Borrow Book
+            6. Return Book
+            7. Print Borrowers
+            8. Print Users
+            9. Exit
+        """)
 
         choice = input("Enter your choice: ")
 
         try:
             if choice == '1':
-                book_id = int(input("Enter book ID: "))
-                name = input("Enter book name: ")
-                quantity = int(input("Enter quantity: "))
-                admin.add_book(book_id, name, quantity)
+                admin.add_book()
             elif choice == '2':
                 admin.print_books()
             elif choice == '3':
-                prefix = input("Enter book name prefix: ")
-                admin.search_books(prefix)
+                admin.search_books()
             elif choice == '4':
-                user_id = int(input("Enter user ID: "))
-                name = input("Enter user name: ")
-                admin.add_user(user_id, name)
+                admin.add_user()
             elif choice == '5':
-                user_id = int(input("Enter user ID: "))
-                book_id = int(input("Enter book ID: "))
-                admin.borrow_book(user_id, book_id)
+                admin.borrow_book()
             elif choice == '6':
-                user_id = int(input("Enter user ID: "))
-                book_id = int(input("Enter book ID: "))
-                admin.return_book(user_id, book_id)
+                admin.return_book()
             elif choice == '7':
                 admin.print_borrowers()
             elif choice == '8':

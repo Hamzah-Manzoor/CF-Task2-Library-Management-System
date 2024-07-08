@@ -61,14 +61,19 @@ class Admin:
             else:
                 json.dump(data, file)
 
-    def add_book(self, book_id, name, quantity):
+    def add_book(self):
         """
         Add a new book to the library.
-
-        :param book_id: int: Unique identifier for the book
-        :param name: str: Title of the book
-        :param quantity: int: Number of copies available
         """
+        # book_id, name, quantity = None, None, None
+        try:
+            book_id = int(input("Enter book ID: "))
+            name = input("Enter book name: ")
+            quantity = int(input("Enter quantity: "))
+        except ValueError as e:
+            print(f"Invalid input: {e}")
+            return
+
         if book_id in self.books:
             print("Book ID already exists.")
             return
@@ -82,12 +87,17 @@ class Admin:
         for book in self.books.values():
             print(book)
 
-    def search_books(self, prefix):
+    def search_books(self):
         """
         Search for books by name using a prefix.
-
-        :param prefix: str: The prefix to search for
         """
+
+        try:
+            prefix = input("Enter book name prefix: ")
+        except ValueError as e:
+            print(f"Invalid input: {e}")
+            return
+
         found_books = [
             book for book in self.books.values()
             if book.name.startswith(prefix)
@@ -95,13 +105,17 @@ class Admin:
         for book in found_books:
             print(book)
 
-    def add_user(self, user_id, name):
+    def add_user(self):
         """
         Add a new user to the system.
-
-        :param user_id: int: Unique identifier for the user
-        :param name: str: Name of the user
         """
+        try:
+            user_id = int(input("Enter user ID: "))
+            name = input("Enter user name: ")
+        except ValueError as e:
+            print(f"Invalid input: {e}")
+            return
+
         if user_id in self.users:
             print("User ID already exists.")
             return
@@ -110,13 +124,18 @@ class Admin:
         self.save_data(self.users_file, self.users)
         print(f"Added user: {user}")
 
-    def borrow_book(self, user_id, book_id):
+    def borrow_book(self):
         """
         Borrow a book from the library.
-
-        :param user_id: int: Unique identifier for the user
-        :param book_id: int: Unique identifier for the book
         """
+
+        try:
+            user_id = int(input("Enter user ID: "))
+            book_id = int(input("Enter book ID: "))
+        except ValueError as e:
+            print(f"Invalid input: {e}")
+            return
+
         if user_id not in self.users:
             print("User ID does not exist.")
             return
@@ -136,13 +155,18 @@ class Admin:
         self.save_data(self.borrows_file, self.borrowed_books)
         print(f"Book borrowed: {book}")
 
-    def return_book(self, user_id, book_id):
+    def return_book(self):
         """
         Return a borrowed book to the library.
-
-        :param user_id: int: Unique identifier for the user
-        :param book_id: int: Unique identifier for the book
         """
+
+        try:
+            user_id = int(input("Enter user ID: "))
+            book_id = int(input("Enter book ID: "))
+        except ValueError as e:
+            print(f"Invalid input: {e}")
+            return
+
         if user_id not in self.borrowed_books or book_id not in self.borrowed_books[user_id]:
             print("No record of this book being borrowed by this user.")
             return
