@@ -1,0 +1,1 @@
+{"1": {"id": 1, "name": "Universe and Science", "quantity": 3}, "2": {"id": 2, "name": "Modern Programming", "quantity": 2}, "3": {"id": 3, "name": "Quantum Physics: Comprehensive Guide", "quantity": 1}, "4": {"id": 4, "name": "Hydrogen Bomb, Fission and Fusion", "quantity": 4}}
